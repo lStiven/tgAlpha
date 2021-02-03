@@ -15,7 +15,6 @@ module.exports = (injectedStore) => {
   };
 
   const add = (professor) => {
-    // console.log(professor);
     return new Promise((resolve, reject) => {
       if (!professor) {
         return reject("Missing professor");

@@ -62,7 +62,45 @@ module.exports = (injectStore) => {
     });
   };
 
+  const getOne = (id) => {
+    return store.getById(TABLE, id);
+  };
+
+  const getAll = () => {
+    return store.list(TABLE);
+  };
+
+  const update = (id, data) => {
+    return new Promise((resolve, reject) => {
+      if (!id || !data) {
+        console.log("Need more data");
+        return reject("Missing data");
+      }
+      store.getById(TABLE, id).then((results) => {
+        if (data.email !== undefined) {
+          if (!checks.checkEmail(data.email)) {
+            return reject(
+              "Invalid e-mail, it must be contain '@correounivalle.edu.co' as domain."
+            );
+          }
+          results[0].email = data.email;
+        }
+        if (data.phone !== undefined) {
+          if (!checks.checkPhone(data.phone)) {
+            return reject("type a valid phone number: example -> 3121234567");
+          }
+          results[0].phone = data.phone;
+        }
+        console.log(`Sending data: ${results[0]}`);
+        resolve(store.patchById(TABLE, results[0], id));
+      });
+    });
+  };
+
   return {
     add,
+    getOne,
+    getAll,
+    update,
   };
 };
