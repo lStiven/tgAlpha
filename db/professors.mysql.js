@@ -19,7 +19,7 @@ const findAll = (table) => {
 const findById = (table, id) => {
   return new Promise((resolve, reject) => {
     connection.query(
-      `SELECT * FROM ${table} WHERE id_professor=${id}`,
+      `SELECT * FROM ${table} WHERE id=${id}`,
       (error, results, fields) => {
         if (error) {
           return reject(`Error in mysql: ${error}`);

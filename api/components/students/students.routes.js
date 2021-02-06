@@ -39,6 +39,7 @@ router.get("/", (req, res) => {
 });
 
 router.patch("/:id", (req, res) => {
+  console.log(req.params, req.body);
   controller
     .update(req.params.id, req.body)
     .then((data) => {

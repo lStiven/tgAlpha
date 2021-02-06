@@ -27,7 +27,7 @@ const getById = (table, id) => {
         }
         if (results.length === 0) {
           console.log("Student doesn't exist");
-          return reject(`There is not a student identified with ${id}`);
+          return reject(`There is not a student identified with id:${id}`);
         }
         console.log(`Got student: ${results[0].name}`);
         resolve(results);
@@ -53,7 +53,6 @@ const list = (table) => {
 };
 
 const patchById = (table, data, id) => {
-  console.log(data);
   return new Promise((resolve, reject) => {
     connection.query(
       `UPDATE ${table} set ? WHERE id_student=${id}`,

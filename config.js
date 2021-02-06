@@ -2,8 +2,8 @@ const config = {
   port: 3000,
   mysql: {
     host: "localhost",
-    user: "root",
-    password: "root",
+    user: "lstiven",
+    password: "Stiven.root3",
     database: "tg",
   },
 };

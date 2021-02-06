@@ -1,0 +1,6 @@
+ERROR: Client does not support authentication protocol requested by server; consider upgrading MySQL client
+SOLUTION:   ingresar a MySQL
+            ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password'
+            Where root as your user localhost as your URL and password as your password
+            Then run this query to refresh privileges:
+            flush privileges;
